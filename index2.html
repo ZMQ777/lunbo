@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index2.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    
+    <div>
+        <div class="b"  style="display:block!important;">
+                <div id="adSlideX" class="da_slide_x adSlideX t clearFloat"  style="display:block!important;left:-200px;">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div id="adIndexX" class="da_index_x">
+                    <a href="javascript:" class="da_index_a">1</a>
+                    <a href="javascript:" class="da_index_a active">2</a>
+                    <a href="javascript:" class="da_index_a">3</a>
+                </div>
+        </div>
+    </div>
+</body>
+<script>
+        $(".da_index_a").click(function(){
+            var index = $(this).index();
+            if(index==0){
+                $("#adSlideX")[0].style.left=0;
+                active(0);
+            }else if(index==1){
+                $("#adSlideX")[0].style.left="-200px";
+                active(1);
+            }else if(index==2){
+                $("#adSlideX")[0].style.left="-400px";
+                active(2);
+            }
+        })
+        function active(i){
+            $(".da_index_a").removeClass("active");
+            $(".da_index_a").eq(i).addClass("active");
+        }
+        function forfunction(){
+            var left = $("#adSlideX")[0].style.left;
+            if(left=="0px"){
+                $("#adSlideX")[0].style.left="-200px";
+                active(1);
+            }else if(left=="-200px"){
+                $("#adSlideX")[0].style.left="-400px";
+                active(2);
+            }else if(left=="-400px"){
+                $("#adSlideX")[0].style.left="0px";
+                active(0);
+            }
+        }
+        var forlister = setInterval(forfunction,2000);
+        $(".b").hover(function(){
+            clearInterval(forlister);
+        },function(){
+            forlister = setInterval(forfunction,2000);
+        })
+    </script>
+</html>
